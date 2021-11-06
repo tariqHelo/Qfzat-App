@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* General classes */
+.py-4 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.mr-0 {
+  margin-right: 0;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.25rem;
+}
+
+.wrapper {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo img {
+  width: 40px;
+}
+
+.logo-holder {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.logo-holder img {
+  height: 25px;
+}
+
+.icon-holder {
+  display: flex;
+  justify-content: center;
+}
+
+.icon-holder.bordered {
+  width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px dashed #872989;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.icon-holder.bordered img {
+  margin-bottom: 2rem;
+}
+
+.inputs {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.inputs input,
+.inputs select {
+  width: 90%;
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 1.125rem;
+}
+
+.inputs input {
+  border-radius: 1.5rem;
+}
+
+.inputs select {
+  height: 60px;
+  border-radius: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputs select option {
+  position: relative;
+}
+
+.inputs select option img {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+}
+
+select {
+  color: rgba(0, 0, 0, .5);
+}
+
+.inputs .input-option {
+  display: block !important;
+  border-radius: .5rem !important;
+  margin-bottom: 1rem;
+  border-color: #f7f7f7;
+}
+
+.buttons {
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxborder-me {
+  border: dashed 2px #872989;
+}
+
+.buttons .btn {
+  padding: .75rem 4rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(to right, #2E2564, #4C266F, #872989);
+  color: #fff;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.buttons .btn-lg {
+  width: 66.6666%;
+  display: block;
+}
+
+.input-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.input-btn button {
+  padding: .85rem 1.5rem;
+  font-size: 1.25rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  background-color: #792882;
+  color: #fff;
+  font-weight: bold;
+}
+
+.input-btn input {
+  padding: .85rem 1.5rem;
+  width: 50%;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+
+  .inputs input,
+  .inputs .input-option,
+  .inputs select {
+    width: 50%;
+  }
+
+  .buttons {
+    flex-direction: row;
+  }
+
+  .buttons .btn {
+    margin-right: 2rem;
+  }
+
+  .buttons .btn-lg {
+    width: 33.3333%;
+  }
+}
