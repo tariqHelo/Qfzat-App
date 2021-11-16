@@ -1,18 +1,21 @@
 import React from 'react';
 import reactCSS from 'reactcss'
 
-import { SketchPicker    } from 'react-color';
+import { SketchPicker } from 'react-color';
 
 class Color extends React.Component {
+  
+
+
     state = {
-    displayColorPicker: false,
-    color: {
-      r: '241',
-      g: '112',
-      b: '19',
-      a: '1',
-    },
-  };
+      displayColorPicker: false,
+      color: {
+        r: '241',
+        g: '112',
+        b: '19',
+        a: '1',
+      },
+    }
 
   handleClick = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
@@ -23,7 +26,7 @@ class Color extends React.Component {
   };
 
   handleChange = (color) => {
- //   console.log(color.hex);
+    //console.log(color.hex);
     this.setState({ color: color.rgb })
   };
 
@@ -58,7 +61,7 @@ class Color extends React.Component {
         },
       },
     });
-
+  console.log(this.props.color);
     return (
       <div>
         <div style={ styles.swatch } onClick={ this.handleClick }>
@@ -75,16 +78,3 @@ class Color extends React.Component {
 }
 export default Color
 
-// You can import AlphaPicker BlockPicker ChromePicker CirclePicker CompactPicker GithubPicker
-//  HuePicker MaterialPicker PhotoshopPicker SketchPicker SliderPicker SwatchesPicker TwitterPicker
-
-
-
-// state = {
-//         background: '#fff',
-//     };
-
-//     handleChangeComplete = (color) => {
-//         console.log(color.hex);
-//         this.setState({ background: color.hex });
-//     };

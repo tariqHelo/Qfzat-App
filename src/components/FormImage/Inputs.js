@@ -1,5 +1,7 @@
 import React , {useState} from "react";
 import axios  from "axios";
+import { useDispatch } from "react-redux";
+
 import Color  from "./Color";
 
 import logo from './Logo-icon.png';
@@ -8,13 +10,15 @@ import drop from './drag-drop.png';
 import { useHistory } from "react-router-dom";
 
 // import FileUploader from './FileUploader';
-const Inputs = () => {
+const Inputs = (props) => {
   const history = useHistory();
- 
+  const dispatch = useDispatch();
   const [photosize, setSelectedPhotoSize] = useState('');
   const [location, setSelectedlocation] = useState('');
   const [font_type, setSelectedFontType] = useState('');
-  const [uploadFile, setUploadFile]= useState('');
+  const [uploadFile, setUploadFile] = React.useState();
+
+
 
   React.useEffect(() => {
   console.log("new photo size: ", photosize);
@@ -27,11 +31,8 @@ const Inputs = () => {
   React.useEffect(() => {
   console.log("new photo font: ", font_type);
    }, [font_type]);
-  
-  const fileChangeHandler = (e) =>{
-      setUploadFile(e.target.value)
-      console.log(uploadFile);
-  }
+   
+
   const photoSizeChangeHandler = (e) =>{
     setSelectedPhotoSize(e.target.value)
    console.log(photosize);
@@ -49,28 +50,28 @@ const Inputs = () => {
    e.preventDefault();
 
     const dataArray = new FormData()
-    dataArray.append("image", uploadFile);
     dataArray.append("size_photo", photosize);
-    dataArray.append("location", location);
+    dataArray.append("postion", location);
     dataArray.append("font_type", font_type);
-    dataArray.append("text_color", "red");
-    
+    dataArray.append("text_color", "#000000");
+    dataArray.append("image", uploadFile);
 
     axios
       .post("http://127.0.0.1:8000/api/image", dataArray, {
         headers: {
           'accept': 'application/json',
-          "Access-Control-Allow-Origin" : "http://localhost:3000",
           "Content-Type": "multipart/form-data",
-          'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+          "Access-Control-Allow-Origin": "*",
         }
       })
       .then((response) => {
         // successfully uploaded response
         console.log(response);
-        const { data } = response;
-        history.push("/link", { data })
-
+        if(response.status === 200){
+           const { data } = response;
+           dispatch({ type: "success", id: data.id }); 
+           history.push("/link", { data })
+        }
       })
       .catch(error => {
             console.log("Error ========>", error);
@@ -92,9 +93,8 @@ const Inputs = () => {
             <img src={drop} width="175" alt="Upload a file" />
               <div className="boxborder-me">
                <input type="file" className="btn btn-light"
-                    name="imageFile"
-                    value={uploadFile}
-                    onChange={fileChangeHandler}
+                    name="image" 
+                    onChange={(e) => setUploadFile(e.target.files[0])}
                     placeholder="Select File"/>
               </div>
           </div>
@@ -106,28 +106,30 @@ const Inputs = () => {
                    onChange={photoSizeChangeHandler}
                    required
                     >
-                    <option value="photo-size">Photo size <img src="http://placehold.it/50x50/f00" alt=""/></option>
-                    <option value="snapChat">snapchat</option>
+                    <option value="">Photo size</option>
+                    <option value="snapchat">snapchat</option>
+                    <option value="whatsapp">whatsapp</option>
                     <option value="inst">inst</option>
-                    <option value="whatsApp">whatsapp</option>
                   </select>
                   <select     
                    value={location} 
                    onChange={locationChangeHandler} 
                    >
                     <option value="location">Location</option>
-                    <option value="top">Top</option>
-                    <option value="center">Center</option>
-                    <option value="bottom">Bootom</option>
+                    <option value="Top">Top</option>
+                    <option value="Center">Center</option>
+                    <option value="Bottom">Bootom</option>
                   </select>
                   <select     
                     value={font_type} 
                     onChange={fontTypeChangeHandler} 
                     >
                     <option value="font-type">Font type</option>
-                    <option value="Cairo">Cairo</option>
-                    <option value="Tajawal">Tajwal</option>
-                    <option value="Fredoka">Fredoka</option>
+                    <option value="Cairo-SemiBold">Cairo</option>
+                    <option value="Tajawal-Medium">Tajwal</option>
+                    <option value="FredokaOne-Regular">Fredoka</option>
+                    <option value="Arabic_Medium">Arabic Medium</option>
+                    <option value="Bahij_TheSansArabic-Bold">Bahij TheSansArabic-Bold</option>
                   </select>
                    <Color></Color>
                   <select    

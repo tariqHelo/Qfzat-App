@@ -1,11 +1,16 @@
 import React from 'react';
 import logo from './Logo-icon.png';
 import Qfzat from './Logo-Qfzat.png';
+import ready from './your-link-is-ready.png';
+import { useSelector } from 'react-redux';
+import { StaticRouter } from 'react-router';
 
+ const Link = () => {
+   
+   const id = useSelector(state => state.photo.response);
+   const path = `http://localhost:3000/Name/${id}`;
 
-class Link extends React.Component {
-  
-    render() {
+   console.log(id);
         return (
             <div className="wrapper">
                 <header>
@@ -13,21 +18,21 @@ class Link extends React.Component {
                     <h4>Page 2</h4>
                 </div>
                 <div className="logo">
-                    <img src="images/Logo-icon.png" alt="Qfzat Logo" />
+                    <img src={logo} alt="Qfzat Logo" />
                 </div>
                 </header>
 
                 <div className="logo-holder">
-                <img src={logo} alt="Logo" />
+                <img src={Qfzat} alt="Logo" />
                 </div>
 
                 <div className="icon-holder">
-                <img src={Qfzat} height="40" alt="Your link is ready!" />
+                <img src={ready} height="40" alt="Your link is ready!" />
                 </div>
 
                 <div className="inputs-holder">
                 <div className="inputs">
-                    <input type="text" value="https://your-link-is-here.com" className="py-4" />
+                    <input type="text" value={path} className="py-4"/>
                 </div>
                 <div className="buttons">
                     <button className="btn">Copy</button>
@@ -35,10 +40,8 @@ class Link extends React.Component {
                 </div>
                 </div>
             </div>
-        )
-    }  
+        )  
 }
-export default Link
-
+export default  Link 
 // sendForm -> backend -> response -> save data to redux -> display  data from redux 
 

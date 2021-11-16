@@ -5,6 +5,8 @@ import FormImage from './components/FormImage/';
 import Hello from './components/Hello';
 
 import Link from './pages/link';
+import Dwonload from './pages/Dwonload';
+import Name from './pages/Name';
 
 import './App.css';
 import {
@@ -24,6 +26,12 @@ function App() {
               </Route>
               <Route path="/link" exact>
                 <Link />
+              </Route>
+              <Route path="/Name" exact>
+                <Name />
+              </Route>
+              <Route path="/Dwonload" exact>
+                <Dwonload />
               </Route>
           </Switch>
       </div>
