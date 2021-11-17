@@ -1,8 +1,9 @@
 import React , {useState} from "react";
 import logo from './Logo-icon.png';
 import Qfzat from './Logo-Qfzat.png';
-import { useHistory } from "react-router-dom";
+import { useHistory , useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import axios  from "axios";
 
 const Name = () => {
  
@@ -10,23 +11,40 @@ const Name = () => {
     const dispatch = useDispatch();
 
     const [name, setName] = useState('');
-
-
+    
+    const { id } = useParams()
+    
     React.useEffect(() => {
-    console.log("new name value: ", name);
+    console.log("name : ", name);
     }, [name]);
 
+   const submitForm = (e) =>{
+    e.preventDefault();
 
-    const submitForm = (e) =>{
-      e.preventDefault();
-        fetch('/', {
-        method: 'post',
-        headers: {'Content-Type':'application/json'},
-        body: {
-            "msg": name
+    const data = {
+      name: name,
+     }
+
+    axios
+      .patch(`http://127.0.0.1:8000/api/image/${id}`, data, {
+        headers: {
+          'accept': 'application/json',
+          "Access-Control-Allow-Origin": "*",
         }
-     });
-    };
+      })
+      .then((response) => {
+        // successfully uploaded response
+        console.log(response);
+        if(response.status === 200){
+           const { data } = response;
+           dispatch({ type: "success", id: data.id }); 
+           history.push("/Dwonload", { data })
+        }
+      })
+      .catch(error => {
+            console.log("Error ========>", error);
+      });
+ }
 
    return(
         <form onSubmit={submitForm} className="wrapper">
@@ -44,10 +62,10 @@ const Name = () => {
             </div>
 
             <div className="inputs-holder">
-            <div action="" method="post">
+            <div method="post">
                 <div className="input-btn">
                 <button>Name</button>
-                <input type="text" onChange={(e) => setName(e.target.value)}/>
+                <input name="name" type="text" onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div className="buttons">
                 <button type="submit" class="btn btn-lg">Get your card</button>

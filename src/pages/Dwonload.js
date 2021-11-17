@@ -2,9 +2,13 @@ import React from 'react';
 import logo from './Logo-icon.png';
 import Qfzat from './Logo-Qfzat.png';
 import card from './Your-card-ready.png';
-class Dwonload extends React.Component {
+import { useSelector } from 'react-redux';
+
+const Dwonload = () => {
   
-    render(){
+   const id = useSelector(state => state.photo.response);
+   const source = `http://127.0.0.1:8000/uploads/${id}`;
+   console.log(id);
         return(
           <div className="wrapper">
                 <header>
@@ -26,12 +30,12 @@ class Dwonload extends React.Component {
 
                 <div className="inputs-holder">
                 <div className="buttons">
-                    <button className="btn btn-lg">Download</button>
+                    <a href={source} target='_blank' className="btn btn-lg" >Download</a>
                 </div>
                 </div>
             </div>  
         )
-    }  
+    
 }
 export default Dwonload
 // sendForm -> backend -> response -> save data to redux -> display  data from redux 

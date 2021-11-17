@@ -27,7 +27,7 @@ function App() {
               <Route path="/link" exact>
                 <Link />
               </Route>
-              <Route path="/Name" exact>
+              <Route path="/Name/:id" exact>
                 <Name />
               </Route>
               <Route path="/Dwonload" exact>

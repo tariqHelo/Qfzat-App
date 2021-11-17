@@ -76,7 +76,6 @@ const Inputs = (props) => {
       .catch(error => {
             console.log("Error ========>", error);
       });
-      console.log(dataArray);
  }
     return (
       <form onSubmit={submitForm} className="wrapper">

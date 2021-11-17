@@ -3,7 +3,6 @@ import logo from './Logo-icon.png';
 import Qfzat from './Logo-Qfzat.png';
 import ready from './your-link-is-ready.png';
 import { useSelector } from 'react-redux';
-import { StaticRouter } from 'react-router';
 
  const Link = () => {
    
