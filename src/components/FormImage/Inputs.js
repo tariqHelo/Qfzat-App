@@ -1,11 +1,10 @@
 import React , {useState} from "react";
 import axios  from "axios";
 import { useDispatch } from "react-redux";
-
+import { MY_API_URL } from  "../../config"
 import Color  from "./Color";
-
-import logo from './Logo-icon.png';
-import drop from './drag-drop.png';
+import logo from './images/Logo-icon.png';
+import drop from './images/drag-drop.png';
 
 import { useHistory } from "react-router-dom";
 
@@ -17,8 +16,8 @@ const Inputs = (props) => {
   const [location, setSelectedlocation] = useState('');
   const [font_type, setSelectedFontType] = useState('');
   const [uploadFile, setUploadFile] = React.useState();
-
-
+  
+  
 
   React.useEffect(() => {
   console.log("new photo size: ", photosize);
@@ -48,7 +47,7 @@ const Inputs = (props) => {
   
  const submitForm = (e) =>{
    e.preventDefault();
-
+   let url  = MY_API_URL
     const dataArray = new FormData()
     dataArray.append("size_photo", photosize);
     dataArray.append("postion", location);
@@ -57,7 +56,7 @@ const Inputs = (props) => {
     dataArray.append("image", uploadFile);
 
     axios
-      .post("http://127.0.0.1:8000/api/image", dataArray, {
+      .post(url, dataArray, {
         headers: {
           'accept': 'application/json',
           "Content-Type": "multipart/form-data",
@@ -80,8 +79,7 @@ const Inputs = (props) => {
     return (
       <form onSubmit={submitForm} className="wrapper">
           <header>
-            <div className="page-number">
-              <h4>Page 1</h4>
+            <div>
             </div>
             <div className="logo">
               <img src={logo} alt="Qfzat Logo"/>
@@ -97,13 +95,11 @@ const Inputs = (props) => {
                     placeholder="Select File"/>
               </div>
           </div>
-          <div className="inputs-holder">
               <div className="inputs-holder">
-                <div className="inputs">
+                <div className="inputs" id="gender">
                   <select    
                    value={photosize} 
                    onChange={photoSizeChangeHandler}
-                   required
                     >
                     <option value="">Photo size</option>
                     <option value="snapchat">snapchat</option>
@@ -127,38 +123,18 @@ const Inputs = (props) => {
                     <option value="Cairo-SemiBold">Cairo</option>
                     <option value="Tajawal-Medium">Tajwal</option>
                     <option value="FredokaOne-Regular">Fredoka</option>
-                    <option value="Arabic_Medium">Arabic Medium</option>
+                    <option value="Arabic-Medium">Arabic Medium</option>
                     <option value="Bahij_TheSansArabic-Bold">Bahij TheSansArabic-Bold</option>
                   </select>
                    <Color></Color>
-                  <select    
-                  //  value={this.state.selectValue} 
-                  //   onChange={this.handleChange} 
-                    >
-                    <option value="Defualt-Text">Defualt Text</option>
-                  </select>
-           
-      
+                
                 </div>
                 
             <div className="buttons">
               <button type="submit" className="btn">Create link</button>
             </div>
           </div>
-        </div>
     </form>
     );
   }
 export default Inputs;
-
-
-
-
-//  const  getInitialState = (selectValue) => {
-//     return { selectValue };
-//     // console.log(selectValue)
-//   };
-//  const handleChange = (e) => {
-//     console.log({selectValue: e.target.value})
-//     this.setState({ selectValue: e.target.value });
-//   };

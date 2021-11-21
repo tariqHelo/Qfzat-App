@@ -2,11 +2,9 @@ import React from 'react';
 
 import FormImage from './components/FormImage/';
 
-import Hello from './components/Hello';
-
-import Link from './pages/link';
-import Dwonload from './pages/Dwonload';
-import Name from './pages/Name';
+import Link from './components/FormImage/link';
+import Dwonload from './components/FormImage/Dwonload';
+import Name from './components/FormImage/Name';
 
 import './App.css';
 import {

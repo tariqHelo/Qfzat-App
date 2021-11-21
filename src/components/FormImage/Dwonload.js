@@ -1,13 +1,15 @@
 import React from 'react';
-import logo from './Logo-icon.png';
-import Qfzat from './Logo-Qfzat.png';
-import card from './Your-card-ready.png';
+import logo from './images/Logo-icon.png';
+import Qfzat from './images/Logo-Qfzat.png';
+import card from './images/Your-card-ready.png';
+import { MY_Storage } from  "../../config"
+
 import { useSelector } from 'react-redux';
 
 const Dwonload = () => {
-  
+   let MyStorage = MY_Storage
    const id = useSelector(state => state.photo.response);
-   const source = `http://127.0.0.1:8000/uploads/${id}`;
+   const source = `${MyStorage}/${id}`;
    console.log(id);
         return(
           <div className="wrapper">

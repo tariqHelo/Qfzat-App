@@ -4,9 +4,6 @@ import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color';
 
 class Color extends React.Component {
-  
-
-
     state = {
       displayColorPicker: false,
       color: {
@@ -27,16 +24,15 @@ class Color extends React.Component {
 
   handleChange = (color) => {
     //console.log(color.hex);
-    this.setState({ color: color.rgb })
+    this.setState({ color: color.rgb }) 
   };
 
   render() {
-
     const styles = reactCSS({
       'default': {
         color: {
-          width: '36px',
-          height: '14px',
+          width: '450px',
+          height: '30px',
           borderRadius: '2px',
           background: `rgba(${ this.state.color.r }, ${ this.state.color.g }, ${ this.state.color.b }, ${ this.state.color.a })`,
         },
@@ -61,9 +57,8 @@ class Color extends React.Component {
         },
       },
     });
-  console.log(this.props.color);
     return (
-      <div>
+      <div >
         <div style={ styles.swatch } onClick={ this.handleClick }>
           <div style={ styles.color } />
         </div>
@@ -71,7 +66,6 @@ class Color extends React.Component {
           <div style={ styles.cover } onClick={ this.handleClose }/>
           <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
         </div> : null }
-
       </div>
     )
   }
