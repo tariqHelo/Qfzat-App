@@ -3,6 +3,7 @@ import PhotoId from "./reducers/PhotoId";
 
 const rootReducer = combineReducers({
     photo: PhotoId,
+
 })
 
 const store = createStore(rootReducer);

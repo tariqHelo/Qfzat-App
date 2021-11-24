@@ -3,19 +3,24 @@ import logo from './images/Logo-icon.png';
 import Qfzat from './images/Logo-Qfzat.png';
 import card from './images/Your-card-ready.png';
 import { MY_Storage } from  "../../config"
+import { useHistory} from "react-router-dom";
 
 import { useSelector } from 'react-redux';
 
 const Dwonload = () => {
+    
+   const history = useHistory();
    let MyStorage = MY_Storage
    const id = useSelector(state => state.photo.response);
    const source = `${MyStorage}/${id}`;
+   const routeChange = () =>{ 
+      history.push('/');
+    }
    console.log(id);
         return(
           <div className="wrapper">
                 <header>
                 <div className="page-number">
-                    <h4>Page 4</h4>
                 </div>
                 <div className="logo">
                     <img src={logo} alt="Qfzat Logo"/>
@@ -23,7 +28,9 @@ const Dwonload = () => {
                 </header>
 
                 <div className="logo-holder">
-                <img src={Qfzat} alt="Logo"/>
+                 <a rel="noreferrer" href='https://WWw.Qfzat.com' target="_blank">
+                   <img src={Qfzat} alt="Qfzat"/>
+                 </a> 
                 </div>
 
                 <div className="icon-holder">
@@ -31,9 +38,13 @@ const Dwonload = () => {
                 </div>
 
                 <div className="inputs-holder">
-                <div className="buttons">
-                    <a href={source} target='_blank' rel="noreferrer" className="btn btn-lg" >Download</a>
+                    <div className="buttons">
+                        <a href={source} download target='_blank' rel="noreferrer" className="btn btn-lg" >Download</a>
+                    </div>
                 </div>
+
+                <div className="buttons">
+                    <h4>if you want to create your own link you can <span  onClick={routeChange} focus>click here </span></h4>
                 </div>
             </div>  
         )

@@ -14,6 +14,13 @@
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+h4 {
+  color: rgb(125, 139, 125);
+}
+span {
+  color: #872989;
+  cursor:default
+}
 
 .mr-0 {
   margin-right: 0;

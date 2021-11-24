@@ -13,13 +13,16 @@ const Name = () => {
     const dispatch = useDispatch();
 
     const [name, setName] = useState('');
-    
+    const [errorMessage, setErrorMessage] = useState('');
+
     const { id } = useParams()
     
     React.useEffect(() => {
     console.log("name : ", name);
     }, [name]);
+    
 
+   
    const submitForm = (e) =>{
     e.preventDefault();
    let url  = `${MY_API_URL}/${id}`
@@ -43,7 +46,8 @@ const Name = () => {
         }
       })
       .catch(error => {
-            console.log("Error ========>", error);
+            setErrorMessage("You Should Write Your Name in English!")
+             console.log("Error ========>", error);
       });
  }
 
@@ -59,17 +63,22 @@ const Name = () => {
             </header>
 
             <div className="logo-holder">
-            <img src={Qfzat} alt="Qfzat"/>
+                 <a rel="noreferrer" href='https://WWw.Qfzat.com' target="_blank">
+                   <img src={Qfzat} alt="Qfzat"/>
+                 </a> 
             </div>
-
+            
             <div className="inputs-holder">
             <div method="post">
                 <div className="input-btn">
                 <button>Name</button>
-                <input name="name" type="text" onChange={(e) => setName(e.target.value)}/>
+                <input name="name" required type="text" onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div className="buttons">
                 <button type="submit" class="btn btn-lg">Get your card</button>
+                </div>
+                <div className="buttons">
+                 {errorMessage && <div class="alert alert-danger" role="alert"> {errorMessage} </div>}
                 </div>
             </div>
             </div>
