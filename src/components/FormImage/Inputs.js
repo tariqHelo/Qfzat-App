@@ -6,6 +6,7 @@ import Color  from "./Color";
 import logo from './images/Logo-icon.png';
 import drop from './images/drag-drop.png';
 import { useHistory } from "react-router-dom";
+import Qfzat from './images/Logo-Qfzat.png';
 
 // import FileUploader from './FileUploader';
 const Inputs = (props) => {
@@ -88,13 +89,18 @@ const Inputs = (props) => {
           <header>
             <div>
             </div>
+            
             <div className="logo">
              <a rel="noreferrer" href='https://WWw.Qfzat.com' target="_blank">
                <img src={logo}   alt="Qfzat Logo"/>
             </a> 
             </div>
           </header>
-
+          <div className="logo-holder">
+              <a rel="noreferrer" href='https://WWw.Qfzat.com' target="_blank">
+                <img src={Qfzat} alt="Qfzat"/>
+              </a> 
+          </div>
           <div className="icon-holder bordered">
             <img src={drop} width="175" alt="Upload a file" />
               <div className="boxborder-me">
@@ -134,10 +140,7 @@ const Inputs = (props) => {
                     onChange={fontTypeChangeHandler} 
                     >
                     <option value="">Font type</option>
-                    <option value="Cairo-SemiBold">Cairo</option>
-                    <option value="Tajawal-Medium">Tajwal</option>
-                    <option value="FredokaOne-Regular">Fredoka</option>
-                    <option value="Arabic-Medium">Arabic Medium</option>
+                    <option value="Amiri-Bold">Amiri</option>
                     <option value="Bahij_TheSansArabic-Bold">Bahij TheSansArabic-Bold</option>
                   </select>
                    <Color changeColor={changeColor}/>
@@ -147,6 +150,10 @@ const Inputs = (props) => {
             <div className="buttons">
               <button type="submit" className="btn">Create link</button>
             </div>
+            <div className="buttons">
+             <span>WWW.Qfzat.com</span>
+            </div>
+
           </div>
     </form>
     );

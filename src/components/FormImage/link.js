@@ -3,11 +3,13 @@ import logo from './images/Logo-icon.png';
 import Qfzat from './images/Logo-Qfzat.png';
 import ready from './images/your-link-is-ready.png';
 import { useSelector } from 'react-redux';
+import { MY_Link } from  "../../config"
 
  const Link = () => {
    
     const id = useSelector(state => state.photo.response);
-    const path = `http://localhost:3000/Name/${id}`;
+    const path = `${MY_Link}/${id}`;
+    
     const [copySuccess, setCopySuccess] = useState('');
     const textAreaRef = useRef(null);
 
@@ -34,7 +36,7 @@ import { useSelector } from 'react-redux';
                 </header>
                  <div className="logo-holder">
                     <a rel="noreferrer" href='https://WWw.Qfzat.com' target="_blank">
-                    <img src={Qfzat} alt="Qfzat"/>
+                      <img src={Qfzat} alt="Qfzat"/>
                     </a> 
                 </div>
                 <div className="icon-holder">
@@ -42,20 +44,23 @@ import { useSelector } from 'react-redux';
                 </div>
 
                 <div className="inputs-holder">
-                <div className="inputs">
+                  <div className="inputs">
                     <input type="text" 
                       ref={textAreaRef}
                       value='Some text to copy'
                       // eslint-disable-next-line react/jsx-no-duplicate-props
                       value={path}
                      className="py-4"/>
-                </div>
-                <div className="buttons">
-                    <button onClick={copyToClipboard} className="btn">Copy</button>
-                    <div>
-                     {copySuccess}
+                   </div>
+                    <div className="buttons">
+                        <button onClick={copyToClipboard} className="btn">Copy</button>
+                        <div>
+                        {copySuccess}
+                        </div>
                     </div>
                 </div>
+                <div className="buttons">
+                    <span>WWW.Qfzat.com</span>
                 </div>
             </div>
         )  

@@ -42,7 +42,7 @@ const Name = () => {
         if(response.status === 200){
            const { data } = response;
            dispatch({ type: "success", id: data.id }); 
-           history.push("/Dwonload", { data })
+           history.push("/dwonload", { data })
         }
       })
       .catch(error => {
@@ -55,7 +55,6 @@ const Name = () => {
         <form onSubmit={submitForm} className="wrapper">
             <header>
             <div className="page-number">
-                <h4>Page 3</h4>
             </div>
             <div className="logo">
                 <img src={logo} alt="Qfzat Logo"/>
@@ -69,18 +68,21 @@ const Name = () => {
             </div>
             
             <div className="inputs-holder">
-            <div method="post">
-                <div className="input-btn">
-                <button>Name</button>
-                <input name="name" required type="text" onChange={(e) => setName(e.target.value)}/>
-                </div>
-                <div className="buttons">
-                <button type="submit" class="btn btn-lg">Get your card</button>
-                </div>
-                <div className="buttons">
-                 {errorMessage && <div class="alert alert-danger" role="alert"> {errorMessage} </div>}
-                </div>
+              <div method="post">
+                  <div className="input-btn">
+                  <button>Name</button>
+                  <input name="name" required type="text" onChange={(e) => setName(e.target.value)}/>
+                  </div>
+                  <div className="buttons">
+                  <button type="submit" class="btn btn-lg">Get your card</button>
+                  </div>
+                  <div className="buttons">
+                  {errorMessage && <div class="alert alert-danger" role="alert"> {errorMessage} </div>}
+                  </div>
+              </div>
             </div>
+            <div className="buttons">
+                <span>WWW.Qfzat.com</span>
             </div>
         </form>    
     ) 

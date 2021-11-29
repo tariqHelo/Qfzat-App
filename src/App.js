@@ -25,10 +25,10 @@ function App() {
               <Route path="/link" exact>
                 <Link />
               </Route>
-              <Route path="/Name/:id" exact>
+              <Route path="/name/:id" exact>
                 <Name />
               </Route>
-              <Route path="/Dwonload" exact>
+              <Route path="/dwonload" exact>
                 <Dwonload />
               </Route>
           </Switch>

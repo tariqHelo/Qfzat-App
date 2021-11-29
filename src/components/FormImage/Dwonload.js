@@ -39,12 +39,15 @@ const Dwonload = () => {
 
                 <div className="inputs-holder">
                     <div className="buttons">
-                        <a href={source} download target='_blank' rel="noreferrer" className="btn btn-lg" >Download</a>
+                        <a href={source}  target='_blank' rel="noreferrer" class="btn btn-lg">Download</a>
                     </div>
                 </div>
 
                 <div className="buttons">
                     <h4>if you want to create your own link you can <span  onClick={routeChange} focus>click here </span></h4>
+                </div>
+                <div className="buttons">
+                  <span>WWW.Qfzat.com</span>
                 </div>
             </div>  
         )
